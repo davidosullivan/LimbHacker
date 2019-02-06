@@ -1,3 +1,6 @@
+# UMALimbHacker
+A fork of LimbHacker that adds [UMA](https://github.com/umasteeringgroup/UMA) compatibility
+
 # LimbHacker
 Limb Hacker cuts skinned mesh characters in Unity3D.
 ## History
