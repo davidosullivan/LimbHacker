@@ -91,7 +91,16 @@ namespace NobleMuffins.LimbHacker
 					if (isSelected)
 						_selectedTransforms.Add(_availableTransforms[i]);
 					else if (!isSelected && wasSelected)
-						_selectedTransforms.Remove(_availableTransforms[i]);
+					{
+						for(int si = 0; si < _selectedTransforms.Count; si++)
+						{
+							if (_selectedTransforms[si].hash == _availableTransforms[i].hash)
+							{
+								_selectedTransforms.RemoveAt(si);
+								break;
+							}
+						}
+					}
 					changed = true;
 				}
 			}
@@ -108,6 +117,7 @@ namespace NobleMuffins.LimbHacker
 				//do we want to try and update the associated transforms here too (i.e. if the user has used bone builder the actual severable transforms could be updated here too)
 				//I think so...
 				_target.ConvertUMASeverablesToSeverables();
+				serializedObject.Update();
 			}
 
 			EditorGUI.indentLevel--;

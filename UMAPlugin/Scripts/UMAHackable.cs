@@ -7,7 +7,7 @@ using UMA.CharacterSystem;
 
 namespace NobleMuffins.LimbHacker
 {
-	[RequireComponent(typeof(DynamicCharacterAvatar))]
+	//[RequireComponent(typeof(DynamicCharacterAvatar))]
 	public class UMAHackable : Hackable
 	{
 		[SerializeField]
@@ -29,13 +29,9 @@ namespace NobleMuffins.LimbHacker
 		[SerializeField]
 		private UMATransform[] _selectedUmaSeverables = new UMATransform[0];
 
-		[SerializeField]
-		[Tooltip("When part of this chracter is cut off remove these components from it. Usually you want to at least remove the DCA, the ExpressionPlayer and this")]
-		private List<Component> _componentsToRemoveOnHack = new List<Component>();
-
-		[SerializeField]
-		[Tooltip("When part of this chracter is cut off add these prefabs to it. These could be game objects with particle systems to pour out blood for example")]
-		private List<GameObject> _prefabsToAddOnHack = new List<GameObject>();
+		//[SerializeField]
+		//[Tooltip("A list of filters that will be used when determining the available UMA Bones. This can be a full or partial bone name. For example normally you would filter out the 'Global' and 'Position' bones in an UMA rig along with any bones that had 'Adjust' in the name")]
+		//private List<string> _umaBoneFilters = new List<string>();
 
 		//used in the editor for filtering the uma bone list of the standard uma adjust bones
 		[SerializeField]
@@ -275,6 +271,12 @@ namespace NobleMuffins.LimbHacker
 		//how did this work before? there never were any colliders on any of the UMA Bones- something must have added them?
 		public void OnCharacterCreated(UMAData umaData)
 		{
+			if(infillMaterial == null)
+			{
+				Debug.LogWarning("No Infill material was specified on " + this.gameObject.name + ". Character will not get sliced!");
+				severables = new Transform[0];
+				return;
+			}
 			ConvertUMASeverablesToSeverables();
 			Collider[] childColliders = gameObject.GetComponentsInChildren<Collider>();
 
