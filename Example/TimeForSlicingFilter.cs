@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UMA;
 
 public class TimeForSlicingFilter : MonoBehaviour
 {
@@ -19,7 +20,12 @@ public class TimeForSlicingFilter : MonoBehaviour
 	{	
 		animator = go.GetComponent<Animator>();
 	}
-	
+
+	public void HandleUMAInstantiation(UMAData umaData)
+	{
+		animator = umaData.gameObject.GetComponent<Animator>();
+	}
+
 	public bool IsTimeForSlicing {
 		get {
 			if(Input.GetKey(KeyCode.A)) return true;

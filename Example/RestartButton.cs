@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Button))]
+[RequireComponent(typeof(RayHitButton))]
 public class RestartButton : MonoBehaviour
 {
 	public Spawner spawner;
 
-	private Button button;
+	private RayHitButton button;
 
 	void Start() {
-		button = gameObject.GetComponent<Button>();
+		button = gameObject.GetComponent<RayHitButton>();
 	}
 
 	void Update () {

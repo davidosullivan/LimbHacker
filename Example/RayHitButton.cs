@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Collider))]
-public class Button : MonoBehaviour
+public class RayHitButton : MonoBehaviour
 {
 	const float changeTime = 0.033f;
 
